@@ -1,1 +1,2 @@
-# for_my_love
+# for my love
+Interactive Valentines Day card for LJP :)
