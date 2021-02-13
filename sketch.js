@@ -30,7 +30,7 @@ function draw() {
   square(50, 450, 50);
   //buttons text
   fill(234, 145, 90);
-  textSize(30);
+  textSize(20);
   textFont('Georgia');
   text('1', 67, 85);
   text('2', 66, 185);
@@ -70,7 +70,7 @@ function draw() {
 
   if (mouseIsPressed == true){
     textSize(25);
-     textFont('Georgia');
+    textFont('Georgia');
 
     //first button
     if (mouseX > 50 && mouseX < 100 && mouseY > 50 && mouseY < 100){
