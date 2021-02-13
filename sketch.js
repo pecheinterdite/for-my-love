@@ -8,7 +8,6 @@ let stars = [];
 //shooting star variables
 let shootheight = 0;
 let shootwidth = 1500;
-textFont('Georgia');
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -69,6 +68,7 @@ function draw() {
 
 
   if (mouseIsPressed == true){
+    textFont('Georgia');
     textSize(25);
 
     //first button
@@ -109,6 +109,7 @@ if (speed == 100){
 
 function bigend(){
   background(7, 11, 52);
+  textFont('Georgia');
   textSize(25);
   text('heart exploded sorry love ya too much', (width/2)-350, (height/2)-100);
   text('happy valentines day my angel ;)', width/2, (height/2));
