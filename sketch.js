@@ -11,6 +11,7 @@ let shootwidth = 1500;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  textFont('Georgia');
 
   //add 50 stars to array and instantiate the class
   for (let i = 0; i < 50; i++) {
@@ -68,31 +69,30 @@ function draw() {
 
 
   if (mouseIsPressed == true){
-//     textFont('Georgia');
     textSize(25);
 
     //first button
     if (mouseX > 50 && mouseX < 100 && mouseY > 50 && mouseY < 100){
       fill(255);
-      text('hi lukey', width-300, height-100);
+      text('hi lukey', width-500, height-100);
       speed = 3;
 
       //second button
     } else if (mouseX > 50 && mouseX < 100 && mouseY > 150 && mouseY < 200){
       fill(255);
-      text('i just wanted to say that', width-300, height-100);
+      text('i just wanted to say that', width-500, height-100);
       speed = 10;
     
       //third button
     } else if (mouseX > 50 && mouseX < 100 && mouseY > 250 && mouseY < 300){
       fill(255);
-      text('you are the love of my life!', width-300, height-100);
+      text('you are the love of my life!', width-500, height-100);
       speed = 50;
 
       //fourth button
     } else if (mouseX > 50 && mouseX < 100 && mouseY > 350 && mouseY < 400){
       fill(255);
-      text('and i will be in love with you until the end of time', width-500, height-100);
+      text('and i will be in love with you until the end of time', width-700, height-100);
       speed = 75;
 
       //fifth button
@@ -109,7 +109,6 @@ if (speed == 100){
 
 function bigend(){
   background(7, 11, 52);
-//   textFont('Georgia');
   textSize(25);
   text('heart exploded sorry love ya too much', (width/2)-350, (height/2)-100);
   text('happy valentines day my angel ;)', width/2, (height/2));
