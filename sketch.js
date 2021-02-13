@@ -1,34 +1,61 @@
-//VALENTINES DAY//
-
-
-//speed of jitters
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////VARIABLES//////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+//Speed of jitters
 let speed = 1;
-//stars array
+//Stars
 let stars = [];
-//shooting star variables
 let shootheight = 0;
 let shootwidth = 1500;
+let shootwidth2 = -1500;
+let shootheight2 = 0;
+//Image
+let img;
+//State to trigger ending
+let state = 0;
+//Background noise
+let noiseValR, noiseValG, noiseValB;
 
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////PRELOAD////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+function preload() {
+  img = loadImage('assets/lafemme.png');
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////SETUP//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-  //add 50 stars to array and instantiate the class
-  for (let i = 0; i < 50; i++) {
+  noiseValR = random(5);
+  noiseValG = random(5);
+  noiseValB = random(5);
+  //Add 70 stars to array and instantiate the class
+  for (let i = 0; i < 70; i++) {
   stars.push(new Jitter());
   }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////DRAW///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 function draw() {
+  if (state == 0){
   background(255, 192, 203, 100);
 
-  //buttons
+  //Buttons
   fill(255);
   square(50, 50, 50);
   square(50, 150, 50);
   square(50, 250, 50);
   square(50, 350, 50);
   square(50, 450, 50);
-  //buttons text
+  square(50, 550, 50);
+  //Button text
   fill(234, 145, 90);
   textSize(20);
   textFont('Georgia');
@@ -37,6 +64,39 @@ function draw() {
   text('3', 69, 281);
   text('4', 69, 381);
   text('5', 68, 480);
+  text('6', 68, 581);
+
+  if (speed == 3){
+    fill(255);
+    text('hi lukey!', 200, 200);
+
+  } else if (speed == 10){
+    fill(255);
+    text('hi lukey!', 200, 200);
+    text('i just wanted to say that', 200, 240);
+
+
+  } else if (speed == 50){
+    fill(255);
+    text('hi lukey!', 200, 200);
+    text('i just wanted to say that', 200, 240);
+    text('you are the love of my life!', 200, 280);
+
+  } else if (speed == 100){
+    fill(255);
+    text('hi lukey!', 200, 200);
+    text('i just wanted to say that', 200, 240);
+    text('you are the love of my life!', 200, 280);
+    text('and that i will be in love with you', width-450, 530);
+
+  } else if (speed == 200){
+    fill(255);
+    text('hi lukey!', 200, 200);
+    text('i just wanted to say that', 200, 240);
+    text('you are the love of my life!', 200, 280);
+    text('and that i will be in love with you', width-450, 530);
+    text('until the end of time...', width-350, 570);
+  }
 
 
 
@@ -72,57 +132,114 @@ function draw() {
     textSize(25);
     textFont('Georgia');
 
-    //first button
+    //First button
     if (mouseX > 50 && mouseX < 100 && mouseY > 50 && mouseY < 100){
-      fill(255);
-      text('hi lukey', width-500, height-100);
       speed = 3;
 
-      //second button
+      //Second button
     } else if (mouseX > 50 && mouseX < 100 && mouseY > 150 && mouseY < 200){
-      fill(255);
-      text('i just wanted to say that', width-500, height-100);
       speed = 10;
     
-      //third button
+      //Third button
     } else if (mouseX > 50 && mouseX < 100 && mouseY > 250 && mouseY < 300){
-      fill(255);
-      text('you are the love of my life!', width-500, height-100);
       speed = 50;
 
-      //fourth button
+      //Fourth button
     } else if (mouseX > 50 && mouseX < 100 && mouseY > 350 && mouseY < 400){
-      fill(255);
-      text('and i will be in love with you until the end of time', width-700, height-100);
-      speed = 75;
-
-      //fifth button
-    } else if (mouseX > 50 && mouseX < 100 && mouseY > 450 && mouseY < 500){
       speed = 100;
-    }
-}
 
-if (speed == 100){
-  //ending screen
+      //Fifth button
+    } else if (mouseX > 50 && mouseX < 100 && mouseY > 450 && mouseY < 500){
+      speed = 200;
+
+      //Sixth button
+    } else if (mouseX > 50 && mouseX < 100 && mouseY > 550 && mouseY < 600){
+      speed = 201;
+    }
+  }
+  
+
+if (speed == 201){
+  //Ending screen
   bigend();
 }
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////LA FEMME///////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////
+  } else if (state == 1){
+
+    //Noise background
+    noiseValR = noiseValR + 0.01;
+    noiseValG = noiseValG + 0.01;
+    noiseValB = noiseValB + 0.01;
+    rVal = noise(noiseValR) * 400;
+    gVal = noise(noiseValG) * 400;
+    bVal = noise(noiseValB) * 400;
+    background(rVal, gVal, bVal, 50);
+
+    //Tickets image
+    img.resize(700, 0);
+    image(img, (width/2-350)+(random(-3, 3)), (height/2-225)+(random(-3, 3)));
+    
+    //From line
+    fill(gVal, bVal, rVal);
+    text('love from your admirer :) xx', width-230, height-40);
+
+
+    //Cursor heart
+    fill(bVal, rVal, gVal);
+    noStroke();
+    beginShape();
+    curveVertex(mouseX, mouseY+400);
+    curveVertex(mouseX, mouseY+70);
+    curveVertex(mouseX-120, mouseY-30);
+    curveVertex(mouseX-75, mouseY-125);
+    curveVertex(mouseX, mouseY-100);
+    curveVertex(mouseX, mouseY);
+    endShape();
+    //HEART//
+    beginShape();
+    curveVertex(mouseX, mouseY+100);
+    curveVertex(mouseX, mouseY-100);
+    curveVertex(mouseX+75, mouseY-125);
+    curveVertex(mouseX+120, mouseY-50);
+    curveVertex(mouseX, mouseY+70);
+    curveVertex(mouseX, mouseY+400);
+    endShape();
+  }
 }
 
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////NIGHT/SKY//////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 function bigend(){
   background(7, 11, 52);
-  textSize(25);
-  textFont('Georgia');
-  text('heart exploded sorry love ya too much', (width/2)-350, (height/2)-100);
-  text('happy valentines day my angel ;)', width/2, (height/2));
-  text('A&L forever <3', width/2-150, height/2 + 100);
 
-  //move and display stars
+  //Move and display stars
   for (let i = 0; i < stars.length; i++) {
     stars[i].move();
     stars[i].display();
   }
 
-  //shooting star
+  fill(255);
+  square(width-300, height-200, 100);
+  textSize(25);
+  textFont('Georgia');
+  fill(255, 0, 0);
+  textSize(15);
+  text('click here', width-290, height-160);
+  text('for your gift', width-290, height-140)
+  text('heart exploded sorry love ya too much', (width/2)-350, (height/2)-100);
+  text('happy valentines day my angel ;)', width/2, (height/2));
+  text('A&L forever <3', width/2-150, height/2 + 100);
+
+  //Shooting stars
     if (shootheight<height+50){
       for(let j = 0; j < 15; j++){
         fill(255, 190, 56);
@@ -130,14 +247,46 @@ function bigend(){
         shootheight++;
         shootwidth--;
       }
+} else {
+  if (shootwidth<width+50){
+    for (let l = 0; l<30; l++){
+      fill(250, 190, 15);
+      ellipse(shootwidth2-l*4, shootheight2-l*0.5, 30-l);
+      shootheight2 = shootheight2 + 0.1;
+      shootwidth2++;
+    }
+  }
 }
+
+//Call ending
+if (mouseIsPressed == true){
+  if (mouseX > width-300 && mouseY > height-200 && mouseX < width-100 && mouseY < height-100){
+    surprise();
+  }
+}
+}
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////GIFT///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+function surprise(){
+  state = 1;
+  background(255, 179, 255);
 }
  
 
 
 
 
-//star jitters
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////STARS//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 class Jitter {
   constructor() {
     this.x = random(width);
@@ -156,5 +305,3 @@ class Jitter {
     ellipse(this.x, this.y, this.diameter, this.diameter);
   }
 }
-
-
