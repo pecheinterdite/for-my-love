@@ -32,11 +32,11 @@ function draw() {
   fill(234, 145, 90);
   textSize(30);
   textFont('Georgia');
-  text('1', 66, 85);
+  text('1', 67, 85);
   text('2', 66, 185);
-  text('3', 66, 285);
-  text('4', 66, 385);
-  text('5', 66, 485);
+  text('3', 66, 283);
+  text('4', 66, 384);
+  text('5', 66, 483);
 
 
 
