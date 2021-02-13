@@ -11,7 +11,6 @@ let shootwidth = 1500;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont('Georgia');
 
   //add 50 stars to array and instantiate the class
   for (let i = 0; i < 50; i++) {
@@ -32,6 +31,7 @@ function draw() {
   //buttons text
   fill(234, 145, 90);
   textSize(30);
+  textFont('Georgia');
   text('1', 66, 85);
   text('2', 66, 185);
   text('3', 66, 285);
@@ -70,6 +70,7 @@ function draw() {
 
   if (mouseIsPressed == true){
     textSize(25);
+     textFont('Georgia');
 
     //first button
     if (mouseX > 50 && mouseX < 100 && mouseY > 50 && mouseY < 100){
@@ -110,6 +111,7 @@ if (speed == 100){
 function bigend(){
   background(7, 11, 52);
   textSize(25);
+  textFont('Georgia');
   text('heart exploded sorry love ya too much', (width/2)-350, (height/2)-100);
   text('happy valentines day my angel ;)', width/2, (height/2));
   text('A&L forever <3', width/2-150, height/2 + 100);
